@@ -26,6 +26,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb")
 
 
 
+# source files
+set(SOURCES     ${PROJECT_SOURCE_DIR}/flsinfo.cc
+                ${PROJECT_SOURCE_DIR}/fls.cc)
+
+
+
 # third-party libs
 include(${PROJECT_HOME_DIR}/cmake/third-party.cmake)
 
@@ -33,3 +39,9 @@ include(${PROJECT_HOME_DIR}/cmake/third-party.cmake)
 
 # unit test
 include(${PROJECT_HOME_DIR}/cmake/unit-test.cmake)
+
+
+
+# libraries
+add_library(fls STATIC ${SOURCES})
+target_include_directories(fls PRIVATE ${PROJECT_HEADER_DIR})
