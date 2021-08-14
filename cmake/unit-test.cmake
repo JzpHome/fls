@@ -1,5 +1,6 @@
 set(TEST_SOURCE_DIR ${PROJECT_HOME_DIR}/test-dir)
-set(TEST_SOURCES    ${TEST_SOURCE_DIR}/main.cc)
+set(TEST_SOURCES    ${TEST_SOURCE_DIR}/main.cc
+                    ${TEST_SOURCE_DIR}/fls.cc)
 
 
 
