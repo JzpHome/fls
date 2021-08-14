@@ -23,3 +23,13 @@ set(LIBRARY_OUTPUT_PATH	    ${CMAKE_HOME_DIRECTORY}/build/lib)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # --> gdb debug
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb")
+
+
+
+# third-party libs
+include(${PROJECT_HOME_DIR}/cmake/third-party.cmake)
+
+
+
+# unit test
+include(${PROJECT_HOME_DIR}/cmake/unit-test.cmake)
