@@ -49,9 +49,7 @@ extern void __fls_inner_log(const char *fmt, ...);
         if(fls_get_log_level() < FLS_LOG_LEVEL_ERR) { \
             break; \
         } \
-        __fls_inner_log("[%s %s][%s][Err] " fmt, \
-                __DATE__, __TIME__, __func__, \
-                ##__VA_ARGS__); \
+        __fls_inner_log("[%s][Err] " fmt, , __func__, ##__VA_ARGS__); \
     } while(0)
 
 
@@ -60,9 +58,7 @@ extern void __fls_inner_log(const char *fmt, ...);
         if(fls_get_log_level() < FLS_LOG_LEVEL_WARN) { \
             break; \
         } \
-        __fls_inner_log("[%s %s][%s][Warn] " fmt, \
-                __DATE__, __TIME__, __func__, \
-                ##__VA_ARGS__); \
+        __fls_inner_log("[%s][Warn] " fmt, , __func__, ##__VA_ARGS__); \
     } while(0)
 
 
@@ -71,9 +67,7 @@ extern void __fls_inner_log(const char *fmt, ...);
         if(fls_get_log_level() < FLS_LOG_LEVEL_INFO) { \
             break; \
         } \
-        __fls_inner_log("[%s %s][%s][Info] " fmt, \
-                __DATE__, __TIME__, __func__, \
-                ##__VA_ARGS__); \
+        __fls_inner_log("[%s][Info] " fmt, , __func__, ##__VA_ARGS__); \
     } while(0)
 
 
@@ -82,9 +76,7 @@ extern void __fls_inner_log(const char *fmt, ...);
         if(fls_get_log_level() < FLS_LOG_LEVEL_DEBUG) { \
             break; \
         } \
-        __fls_inner_log("[%s %s][%s][Debug] " fmt, \
-                __DATE__, __TIME__, __func__, \
-                ##__VA_ARGS__); \
+        __fls_inner_log("[%s][Debug] " fmt, , __func__, ##__VA_ARGS__); \
     } while(0)
 
 
@@ -93,9 +85,7 @@ extern void __fls_inner_log(const char *fmt, ...);
         if(fls_get_log_level() < FLS_LOG_LEVEL_VERBOSE) { \
             break; \
         } \
-        __fls_inner_log("[%s %s][%s][Verbose] " fmt, \
-                __DATE__, __TIME__, __func__, \
-                ##__VA_ARGS__); \
+        __fls_inner_log("[%s][Verbose] " fmt, , __func__, ##__VA_ARGS__); \
     } while(0)
 
 #ifdef __cplusplus
