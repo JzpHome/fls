@@ -10,12 +10,6 @@ project(fast-log-system
 set(PROJECT_VERSION_MAJOR   0)
 set(PROJECT_VERSION_MINOR   1)
 
-set(PROJECT_HOME_DIR	    ${CMAKE_HOME_DIRECTORY})
-set(PROJECT_SOURCE_DIR	    ${CMAKE_HOME_DIRECTORY}/src)
-set(PROJECT_HEADER_DIR	    ${CMAKE_HOME_DIRECTORY}/include)
-set(PROJECT_BINARY_DIR	    ${CMAKE_HOME_DIRECTORY}/build)
-set(LIBRARY_OUTPUT_PATH	    ${CMAKE_HOME_DIRECTORY}/build/lib)
-
 
 
 # compiling parameter
@@ -27,21 +21,28 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb")
 
 
 # source files
-set(SOURCES     ${PROJECT_SOURCE_DIR}/flsinfo.cc
-                ${PROJECT_SOURCE_DIR}/fls.cc)
+set(FLS_SOURCES src/flsinfo.cc
+                src/fls.cc)
 
 
 
 # third-party libs
-include(${PROJECT_HOME_DIR}/cmake/third-party.cmake)
+include(cmake/third-party.cmake)
 
 
 
 # unit test
-include(${PROJECT_HOME_DIR}/cmake/unit-test.cmake)
+if(CMAKE_PROJECT_NAME STREQUAL fls)
+    include(cmake/unit-test.cmake)
+endif()
 
 
 
 # libraries
-add_library(fls STATIC ${SOURCES})
-target_include_directories(fls PRIVATE ${PROJECT_HEADER_DIR})
+add_library(fls STATIC ${FLS_SOURCES})
+target_include_directories(fls PRIVATE include)
+set_target_properties(fls
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
