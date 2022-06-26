@@ -61,7 +61,8 @@ TEST_F(FLSTest, __fls_inner_log) {
     setbuf(stderr, nullptr);
 
     sprintf(compare, "%s %d\n", "test", 1);
-    EXPECT_STREQ(output, compare);
+    auto postion = std::string(output).find(compare);
+    EXPECT_NE(postion, std::string::npos);
 }
 
 TEST_F(FLSTest, fls_set_log_destination) {
